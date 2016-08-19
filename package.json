@@ -12,9 +12,6 @@
   "scripts": {
     "test": "mocha"
   },
-  "bin": {
-    "wui": "bin/wui.js"
-  },
   "files": [
     "generators"
   ],
