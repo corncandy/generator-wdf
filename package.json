@@ -3,7 +3,6 @@
   "version": "0.0.2",
   "description": "WUI framework generator",
   "license": "MIT",
-  "main": "app/index.js",
   "repository": "corncandy/generator-wdf",
   "author": {
     "name": "Cloud Mu",
