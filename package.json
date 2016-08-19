@@ -10,7 +10,7 @@
     "url": "https://github.com/corncandy"
   },
   "bin": {
-    "wui": "lib/wui.js"
+    "wui": "bin/wui.js"
   },
   "scripts": {
     "test": "mocha"
