@@ -1,6 +1,6 @@
 {
   "name": "generator-wdf",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "WUI framework generator",
   "license": "MIT",
   "repository": "corncandy/generator-wdf",
