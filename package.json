@@ -9,6 +9,9 @@
     "email": "muyunsong@gmail.com",
     "url": "https://github.com/corncandy"
   },
+  "bin": {
+    "wui": "lib/wui.js"
+  },
   "scripts": {
     "test": "mocha"
   },
