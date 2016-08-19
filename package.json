@@ -13,7 +13,7 @@
     "test": "mocha"
   },
   "bin": {
-    "wui": "./bin/wui.js"
+    "wui": "bin/wui.js"
   },
   "files": [
     "generators"
