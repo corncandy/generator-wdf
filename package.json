@@ -9,8 +9,12 @@
     "url": "https://corncandy.github.io"
   },
   "files": [
-    "generators"
+    "generators",
+    "bin"
   ],
+  "bin": {
+    "wui": "bin/wui.js"
+  },
   "main": "generators/index.js",
   "keywords": [
     "wui-framework",
