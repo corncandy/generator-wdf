@@ -1,34 +1,53 @@
 {
   "name": "generator-wdf",
-  "version": "0.1.0",
-  "description": "WUI framework generator",
-  "license": "MIT",
-  "repository": "corncandy/generator-wdf",
+  "version": "0.0.0",
+  "description": "Generator for WUI framework.",
+  "homepage": "https://corncandy.github.io/generator-wdf",
   "author": {
     "name": "Cloud Mu",
     "email": "muyunsong@gmail.com",
-    "url": "https://github.com/corncandy"
-  },
-  "bin": {
-    "wui": "bin/wui.js"
-  },
-  "scripts": {
-    "test": "mocha"
+    "url": "https://corncandy.github.io"
   },
   "files": [
-    "generators",
-    "bin"
+    "generators"
   ],
+  "main": "generators/index.js",
   "keywords": [
+    "wui-framework",
+    "wui-generator",
+    "yeoman-generator",
     "yeoman-generator"
   ],
   "dependencies": {
+    "yeoman-generator": "^0.23.0",
     "chalk": "^1.0.0",
-    "yeoman-environment": "^1.6.3",
-    "yeoman-generator": "^0.19.0",
-    "yosay": "^1.0.2"
+    "yosay": "^1.0.0"
   },
   "devDependencies": {
-    "mocha": "*"
-  }
+    "yeoman-test": "^1.0.0",
+    "yeoman-assert": "^2.0.0",
+    "eslint": "^3.1.1",
+    "eslint-config-xo-space": "^0.14.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^2.0.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-line-ending-corrector": "^1.0.1",
+    "gulp-istanbul": "^1.0.0",
+    "gulp-mocha": "^2.0.0",
+    "gulp-plumber": "^1.0.0",
+    "gulp-nsp": "^2.1.0",
+    "gulp-coveralls": "^0.1.0"
+  },
+  "eslintConfig": {
+    "extends": "xo-space",
+    "env": {
+      "mocha": true
+    }
+  },
+  "repository": "git@github.com:corncandy/generator-wdf.git",
+  "scripts": {
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
+  },
+  "license": "MIT"
 }
