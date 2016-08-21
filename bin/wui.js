@@ -59,6 +59,6 @@ if (process.argv.length < 3) {
       env.run(generator);
     });
   } else {
-    console.log(chalk.red('Sorry, this module is under construction.'))
+    console.log(chalk.red('Sorry, this module is under construction.'));
   }
 }
