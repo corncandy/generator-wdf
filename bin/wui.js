@@ -4,5 +4,5 @@ var yeoman = require('yeoman-environment');
 var env = yeoman.createEnv();
 
 env.lookup(function () {
-  env.run('wdf:web');
+  env.run('wdf:web-page');
 });

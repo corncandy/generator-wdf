@@ -1,0 +1,18 @@
+.profile-list {
+  position: relative;
+  float: left;
+  padding: 30px 25px;
+  width: 100px;
+}
+
+.profile-list li {
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.profile-list .avatar-active {
+  position: absolute;
+  top: 125px;
+  left: 0;
+}
+
