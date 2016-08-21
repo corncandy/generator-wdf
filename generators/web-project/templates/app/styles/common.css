@@ -1,0 +1,20 @@
+.paginator {
+  width: 34px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.wui-breadcrumb {
+  height: 30px;
+  line-height: 30px;
+  margin: 0;
+  padding: 0;
+  padding-left: 10px;
+}
+
+.wui-breadcrumb li {
+  list-style: none;
+  float: left;
+  font-size: 16px;
+  margin-right: 5px;
+}
