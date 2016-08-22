@@ -43,6 +43,8 @@ WUI.init = function(options) {
 
   var menus = [];
   var initSiteHeader = function(resp) {
+    var channelId = WUI.getParams().id;
+      console.log('1231221',channelId);
     WUI.SiteHeader.create({
       $el: $('.main-header'),
       name: resp.aasUserPrincipal.ssoUserName,

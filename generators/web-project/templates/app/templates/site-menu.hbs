@@ -1,0 +1,29 @@
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+      <li class="header">统一支付平台</li>
+      <li class="treeview {{#if isHome}} active {{/if}}">
+        <a href="home.html">
+          <i class="fa fa-circle"></i> <span>首页</span>
+        </a>
+      </li>
+      {{#each menus}}
+      <li class="treeview {{#if isActive}} active {{/if}}">
+        <a href="#">
+          <i class="fa fa-circle"></i> <span>{{resourceDisplayName}}</span>
+        </a>
+        <ul class="treeview-menu" style="display: block;">
+          {{#each subs}}
+          <li class="{{#if isActive}} active {{/if}}">
+            <a {{#if newPage}}target="_blank"{{/if}} href={{linkUrl}}><i class="fa fa-circle-o"></i> {{resourceDisplayName}}</a>
+          </li>
+          {{/each}}
+        </ul>
+      </li>
+      {{/each}}
+    </ul>
+  </section>
+  <!-- /.sidebar -->
+</aside>
