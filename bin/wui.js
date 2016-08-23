@@ -28,12 +28,6 @@ function printUsage() {
   console.log('   ', chalk.yellow('wui h5app:page'), '\t', 'Create wdf-h5app page.');
 }
 
-function runCommand() {
-  env.lookup(function () {
-    // env.run('wdf:web-page');
-  });
-}
-
 printWelcome();
 
 if (process.argv.length < 3) {

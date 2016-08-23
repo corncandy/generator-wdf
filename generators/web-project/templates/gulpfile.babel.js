@@ -13,10 +13,7 @@ import proxyMiddleware from 'http-proxy-middleware';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
-// const proxy = proxyMiddleware('/upp/web/v1', {
-//   target: 'http://10.199.203.227:41006'
-// });
-const proxy = proxyMiddleware('/upp/web/v1', {
+const proxy = proxyMiddleware(['/upp/web/v1', '/sample/web/v1'], {
   target: 'http://120.55.91.12:3000'
 });
 
