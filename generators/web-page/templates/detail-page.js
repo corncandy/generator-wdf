@@ -1,6 +1,52 @@
 'use strict';
-
+// Constants
+var META = {
+  id: { label: '用户ID' },
+  name: { label: '用户姓名', required: true, maxLength: 20 },
+  email: { label: 'Email', type: 'email', required: true, maxLength: 11 },
+  age: { label: '年龄', required: true, type: 'number' },
+  birthday: { label: '生日', type: 'date', format: 'YYYY-DD-MM' },
+  status: {
+    label: '用户状态',
+    type: 'select',
+    options: [{
+      label: '未开户',
+      value: 0
+    }, {
+      label: '未激活',
+      value: 1
+    }, {
+      label: '正常',
+      value: 2
+    }, {
+      label: '已销户',
+      value: 3
+    }]
+  }
+};
+var EDIT_FIELDS = ['name', 'age', 'birthday', 'email', 'status'];
+// Callback Functions
+var submitData = function (item, etag) {
+  WUI.ajax({
+    url: '/sample/web/v1/users/' + WUI.link().id,
+    jsonData: $.extend(item, {
+      _etag: etag
+    })
+  }).done(function () {
+    WUI.alert.create({
+      message: '成功',
+      success: true
+    });
+    /**
+    setTimeout(function() {
+      window.close();
+    }, 2000);
+    */
+  });
+};
+// Load Page
 WUI.ready = function () {
+  // TODO: Need ContentHeader here
   $('.content-header').html(WUI.templates['content-header']({
     paths: [{
       name: '列表页面',
@@ -10,70 +56,21 @@ WUI.ready = function () {
     }]
   }));
 
-  var meta = {
-    id: {
-      label: '用户ID'
-    },
-    name: {
-      label: '用户姓名',
-      required: true,
-      maxLength: 20,
-      edit: true
-    },
-    email: {
-      label: 'Email',
-      type: 'email',
-      required: true,
-      maxLength: 11,
-      edit: true
-    },
-    age: {
-      label: '年龄',
-      required: true,
-      type: 'number',
-      edit: true
-    },
-    birthday: {
-      label: '生日',
-      type: 'date',
-      edit: true
-    },
-    status: {
-      label: '用户状态',
-      type: 'select',
-      options: [{
-        label: '未开户',
-        value: 0
-      }, {
-        label: '未激活',
-        value: 1
-      }, {
-        label: '正常',
-        value: 2
-      }, {
-        label: '已销户',
-        value: 3
-      }]
-    }
-  };
-
   WUI.ajax({
     url: '/sample/web/v1/users/' + WUI.link().id,
     method: 'GET'
   }).done(function (resp) {
     var user = resp.data;
+    var editResource = WUI.getResource('/edit');
 
     WUI.dataDialog.create({
       $el: $('#detail-info'),
-      meta: meta,
+      meta: META,
       list: user,
-      fields: ['name', 'email', 'age', 'birthday', 'status'],
-      onConfirm: function (userInfo) {
-        console.log(userInfo);
-      },
-      onCancel: function () {
-        window.close();
-      }
+      fields: EDIT_FIELDS,
+      confirmButton: editResource && editResource.resourceDisplayName,
+      onConfirm: submitData.bind(null, user, resp.etag),
+      onCancel: window.close
     });
   });
 };
