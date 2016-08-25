@@ -46,15 +46,15 @@ var submitData = function (item, etag) {
 };
 // Load Page
 WUI.ready = function () {
-  // TODO: Need ContentHeader here
-  $('.content-header').html(WUI.templates['content-header']({
-    paths: [{
+  WUI.ContentHeader.create({
+    $el: $('.content-header'),
+    meta: [{
       name: '列表页面',
       url: 'list-page.html'
     }, {
       name: '编辑'
     }]
-  }));
+  });
 
   WUI.ajax({
     url: '/sample/web/v1/users/' + WUI.link().id,
@@ -74,7 +74,7 @@ WUI.ready = function () {
     });
   });
 };
-
+// Keep this function
 $(function () {
   WUI.init({
     system: 'sample'
