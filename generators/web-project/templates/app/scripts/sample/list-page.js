@@ -31,12 +31,10 @@ var EDIT_FIELDS = ['name', 'age', 'birthday', 'email', 'status'];
 // Callback functions
 var createData = function () {
   var createDialog = WUI.dataDialog.create({
-    $el: $('.data-dialog'),
     dialogPop: true,
     dialogPopTitle: '新增用户',
     meta: META,
     list: {},
-    buttonHide: false,
     fields: EDIT_FIELDS,
     onConfirm: function (itemInfo) {
       console.log(itemInfo);
@@ -51,10 +49,9 @@ var editData = function (item) {
 
 var deleteData = function (item) {
   var confirmDialog = WUI.ModalDialog.create({
-    message: '请确认',
-    title: '是否删除此用户数据？',
+    title: '请确认',
+    message: '是否删除此用户数据？',
     onConfirm: function () {
-      console.log('delete data');
       confirmDialog.hide();
     }
   });
@@ -121,37 +118,37 @@ var queryData = function (options) {
 };
 // Load Page
 WUI.ready = function () {
-    var queryResource = WUI.getResource('/query');
-    var addResource = WUI.getResource('/add');
+  var queryResource = WUI.getResource('/query');
+  var addResource = WUI.getResource('/add');
 
-    WUI.ContentHeader.create({
-      $el: $('.content-header'),
-      meta: [{
-        name: '列表页面'
-      }]
-    });
+  WUI.ContentHeader.create({
+    $el: $('.content-header'),
+    meta: [{
+      name: '列表页面'
+    }]
+  });
 
-    WUI.DataFilter.create({
-      $el: $('.data-filter'),
-      meta: META,
-      fields: FILTER_FIELDS,
-      queryButton: queryResource && queryResource.resourceDisplayName,
-      onFilter: function (params) {
-        queryData($.extend(params, {
-          currentPage: 0,
-          pageSize: PAGE_SIZE
-        }));
-      },
-      addButton: addResource && addResource.resourceDisplayName,
-      addFunc: createData
-    });
+  WUI.DataFilter.create({
+    $el: $('.data-filter'),
+    meta: META,
+    fields: FILTER_FIELDS,
+    queryButton: queryResource && queryResource.resourceDisplayName,
+    onFilter: function (params) {
+      queryData($.extend(params, {
+        currentPage: 0,
+        pageSize: PAGE_SIZE
+      }));
+    },
+    addButton: addResource && addResource.resourceDisplayName,
+    addFunc: createData
+  });
 
-    queryData({
-      currentPage: 0,
-      pageSize: 20
-    });
-  }
-  // Keep this function
+  queryData({
+    currentPage: 0,
+    pageSize: 20
+  });
+}
+// Keep this function
 $(function () {
   WUI.init({
     system: 'sample'
