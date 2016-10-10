@@ -16,23 +16,9 @@ var API = {
   QUERY_FEES_INFO: DOMAIN+'/upp/web/v1/channelFees',//查询所有计费信息
   QUERY_FEE_ITEM: DOMAIN+'/upp/web/v1/channelFee',//查询单个计费信息
   SAVE_CHANGE_INFO: DOMAIN+'/upp/web/v1/uppTodo' //保存审核信息
-}
-
-var initHandlerbars = function() {
-  Handlebars.registerHelper('compare', function(v1, v2, options) {
-    if (v1 > v2) {
-      return options.fn(this);
-    }
-    return options.inverse(this);
-  });
-
-  Handlebars.registerHelper('equal', function(v1, v2, options) {
-    if (v1 === v2) {
-      return options.fn(this);
-    }
-    return options.inverse(this);
-  });
 };
+
+API.DUMMY = '';
 
 //var WUI = window.WUI || {};
 
@@ -40,10 +26,10 @@ WUI.init = function(options) {
   // init global config
   WUI.config = WUI.config || {};
   WUI.config.system = options.system;
+  WUI.config.locale = options.locale || 'zh-CN';
 
   var menus = [];
   var initSiteHeader = function(resp) {
-    var channelId = WUI.link().id;
     WUI.SiteHeader.create({
       $el: $('.main-header'),
       name: resp.aasUserPrincipal.ssoUserName,
@@ -103,17 +89,13 @@ WUI.init = function(options) {
 
   var initConfigInfo = '';
 
-  var initContentHeader = function(resp) {
-    $('.content-header').replaceWith(WUI.templates['page-header'](resp));
-  };
-
   var initSiteFooter = function(resp) {
     $('.main-footer').replaceWith(WUI.templates['site-footer'](resp));
   };
 
   WUI.getResource =  function(url,a) {
     var la= a ? a : window.location.pathname;
-    var url = la + url;
+    url = la + url;
     for (var i = 0; i < initConfigInfo.length; i++) {
       var _link = initConfigInfo[i].linkUrl;
       if(url == _link){
@@ -130,7 +112,6 @@ WUI.init = function(options) {
     }).done(function(resp) {
       initSiteHeader(resp);
       initSiteMenu(resp);
-      // initContentHeader(resp);
       initSiteFooter(resp);
       initConfigInfo = resp.aasUserPrincipal.aasUserResources.resources;
       $.AdminLTE.init();
@@ -138,13 +119,12 @@ WUI.init = function(options) {
     });
   };
 
-  initHandlerbars();
   initSystem(options);
 };
 
 WUI.ready = WUI.ready || function() {
-    console.error('WUI: Please provide WUI.ready function.');
-  };
+  console.error('WUI: Please provide WUI.ready function.');
+};
 
 WUI.typeItem =  function(sub,info){
   var list = []
@@ -155,5 +135,3 @@ WUI.typeItem =  function(sub,info){
   })
   return list
 }
-
-

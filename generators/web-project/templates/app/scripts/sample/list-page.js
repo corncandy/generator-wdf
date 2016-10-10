@@ -6,7 +6,7 @@ var META = {
   name: { label: '用户姓名', required: true, maxLength: 20 },
   email: { label: 'Email', type: 'email', required: true, maxLength: 11 },
   age: { label: '年龄', required: true, type: 'number' },
-  birthday: { label: '生日', type: 'date', format: 'YYYY-DD-MM' },
+  birthday: { label: '生日', type: 'date', format: 'yyyy-DD-MM' },
   status: {
     label: '用户状态',
     type: 'select',
@@ -29,17 +29,19 @@ var TABLE_FIELDS = ['id', 'name', 'age', 'birthday', 'email', 'status'];
 var FILTER_FIELDS = ['name', 'age', 'birthday', 'status'];
 var EDIT_FIELDS = ['name', 'age', 'birthday', 'email', 'status'];
 // Callback functions
-var createData = function () {
-  var createDialog = WUI.dataDialog.create({
-    dialogPop: true,
-    dialogPopTitle: '新增用户',
+var createData = function (item) {
+  WUI.ModalDialog.create({
+    onConfirm: function (itemInfo) {},
+    onCancel: function () {}
+  });
+
+ WUI.dataDialog.create({
+    $el: $('.modal-body'),
+   dialogPop:true,
     meta: META,
-    list: {},
-    fields: EDIT_FIELDS,
-    onConfirm: function (itemInfo) {
-      console.log(itemInfo);
-      createDialog.hide();
-    }
+    list: item,
+    buttonHide: false,
+    fields: EDIT_FIELDS
   });
 };
 
@@ -48,12 +50,10 @@ var editData = function (item) {
 };
 
 var deleteData = function (item) {
-  var confirmDialog = WUI.ModalDialog.create({
-    title: '请确认',
-    message: '是否删除此用户数据？',
-    onConfirm: function () {
-      confirmDialog.hide();
-    }
+  WUI.ModalDialog.create({
+    message: '11111',
+    title: '2222',
+    onConfirm: function () { console.log('delete data'); }
   });
 };
 
@@ -148,7 +148,7 @@ WUI.ready = function () {
     pageSize: 20
   });
 }
-// Keep this function
+  // Keep this function
 $(function () {
   WUI.init({
     system: 'sample'

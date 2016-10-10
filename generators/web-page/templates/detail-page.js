@@ -2,10 +2,13 @@
 // Constants
 var META = {
   id: { label: '用户ID' },
-  name: { label: '用户姓名', required: true, maxLength: 20 },
-  email: { label: 'Email', type: 'email', required: true, maxLength: 11 },
-  age: { label: '年龄', required: true, type: 'number' },
-  birthday: { label: '生日', type: 'date', format: 'YYYY-DD-MM' },
+  name: { label: '用户姓名', readOnly:true, required: true, maxLength: 20 },
+  email: { label: 'Email',  type: 'email', edit:true, voild:function(a){
+    console.log(a);
+    return '123';
+  }, required: true, maxLength: 11 },
+  age: { label: '年龄', required: true, type: 'number',maxLength: 11, voild:function(){return 'I am a very long tip long tip long tip long tip long tip long tip long tip long tip'} },
+  birthday: { label: '生日', type: 'date', format: 'yyyy-MM-dd', maxLength:10, voild:function(){return 'I am a very long tip long tip long tip long tip long tip long tip long tip long tip'} },
   status: {
     label: '用户状态',
     type: 'select',
@@ -24,25 +27,26 @@ var META = {
     }]
   }
 };
-var EDIT_FIELDS = ['name', 'age', 'birthday', 'email', 'status'];
+var EDIT_FIELDS = ['age', 'birthday', 'name', 'email', 'status', 'birthday', 'name', 'email', 'status'];
 // Callback Functions
 var submitData = function (item, etag) {
-  WUI.ajax({
-    url: '/sample/web/v1/users/' + WUI.link().id,
-    jsonData: $.extend(item, {
-      _etag: etag
-    })
-  }).done(function () {
-    WUI.alert.create({
-      message: '成功',
-      success: true
-    });
-    /**
-    setTimeout(function() {
-      window.close();
-    }, 2000);
-    */
-  });
+  //WUI.ajax({
+  //  url: '/sample/web/v1/users/' + WUI.link().id,
+  //  jsonData: $.extend(item, {
+  //    _etag: etag
+  //  })
+  //}).done(function () {
+  //  WUI.alert.create({
+  //    message: '成功',
+  //    success: true
+  //  });
+  //  /**
+  //  setTimeout(function() {
+  //    window.close();
+  //  }, 2000);
+  //  */
+  //});
+  console.log('2132131');
 };
 // Load Page
 WUI.ready = function () {

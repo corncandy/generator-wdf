@@ -16,12 +16,14 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
      folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../vendors/styles/_all-skins.min.css">
+  <!-- Tour -->
+  <!--<link rel="stylesheet" href="../vendors/styles/bootstrap-tour.min.css">-->
   <!-- WUI Web -->
   <link rel="stylesheet" href="../vendors/styles/wui-web.min.css">
   <!-- Common style for site. -->
   <link rel="stylesheet" href="../styles/common.css">
   <!-- Page style. -->
-  <link rel="stylesheet" href="../styles/sample/list-page.css">
+  <link rel="stylesheet" href="../styles/<%= moduleName %>/<%= pageName %>.css">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -58,13 +60,17 @@
   <script src="../vendors/scripts/jquery.slimscroll.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../vendors/scripts/app.js"></script>
+  <!-- Tour -->
+  <script src="../vendors/scripts/bootstrap-tour.min.js"></script>
   <!-- WUI Web -->
   <script src="../vendors/scripts/wui-web.js"></script>
   <script src="../scripts/templates.js"></script>
+  <script src="../scripts/resources.zh-CN.js"></script>
+  <script src="../scripts/resources.en.js"></script>
   <!-- Common script for site. -->
   <script src="../scripts/common.js"></script>
   <!-- Page script. -->
-  <script src="../scripts/sample/list-page.js"></script>
+  <script src="../scripts/<%= moduleName %>/<%= pageName %>.js"></script>
 </body>
 
 </html>
